@@ -1,0 +1,2 @@
+# Gerador-de-Sensi-2
+MELHOR GERADOR DE SENSI DO CENARIO
