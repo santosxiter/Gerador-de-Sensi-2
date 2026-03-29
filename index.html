@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>SANTOS XITER SENSIBILIDADE</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      color: #22c55e;
+      margin-top: 20px;
+    }
+
+    .box {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: 20px auto;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      background: #22c55e;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .resultado {
+      margin-top: 20px;
+      background: #020617;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: left;
+      white-space: pre-line;
+    }
+
+    /* ANIMAÇÃO BOLA PONTINHOS */
+    .loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      width: 15px;
+      height: 15px;
+      margin: 0 5px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: bounce 0.6s infinite alternate;
+    }
+
+    .dot:nth-child(2) { animation-delay: 0.2s; }
+    .dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes bounce {
+      0% { transform: translateY(0); opacity: 0.3; }
+      100% { transform: translateY(-20px); opacity: 1; }
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 10px;
+      background: #22c55e;
+      color: black;
+      font-weight: bold;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔥 SANTOS XITER SENSIBILIDADE 🔥</h1>
+
+  <!-- TELA DE INÍCIO -->
+  <div class="box" id="startBox">
+    <div class="loader">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <button onclick="startApp()">INICIAR</button>
+  </div>
+
+  <!-- TELA PRINCIPAL -->
+  <div class="box" id="configBox" style="display:none;">
+    <input type="text" id="celular" placeholder="Digite seu celular">
+
+    <select id="estilo">
+      <option value="rush">Rush</option>
+      <option value="capa">Capa</option>
+      <option value="equilibrado">Equilibrado</option>
+    </select>
+
+    <select id="nivel">
+      <option value="iniciante">Iniciante</option>
+      <option value="intermediario">Intermediário</option>
+      <option value="avancado">Avançado</option>
+    </select>
+
+    <button onclick="gerarSensi()">GERAR SENSI</button>
+    <button onclick="salvarConfig()">SALVAR CONFIGURAÇÕES</button>
+
+    <div class="resultado" id="resultado"></div>
+  </div>
+
+  <!-- BOTÃO BEACONS OPCIONAL -->
+  <div class="box">
+    <h2>🌟 Meus Links</h2>
+    <a class="button" href="https://beacons.ai/santosxiter" target="_blank">
+      Acessar Beacons
+    </a>
+  </div>
+
+  <script>
+    function startApp() {
+      document.getElementById("startBox").style.display = "none";
+      document.getElementById("configBox").style.display = "block";
+    }
+
+    function gerarSensi() {
+      let celular = document.getElementById("celular").value.toLowerCase();
+      let estilo = document.getElementById("estilo").value;
+
+      let desempenho = "médio";
+      let dpi = 400;
+
+      if (celular.includes("xiaomi") || celular.includes("poco") || celular.includes("iphone")) {
+        desempenho = "forte";
+        dpi = 500;
+      } else if (celular.includes("samsung") || celular.includes("motorola")) {
+        desempenho = "médio";
+        dpi = 450;
+      } else {
+        desempenho = "fraco";
+        dpi = 600;
+      }
+
+      let geral = 150;
+      let red = 140;
+      let x2 = 130;
+      let x4 = 120;
+      let awm = 80;
+      let olhadinha = 120;
+
+      if (desempenho === "fraco") {
+        geral += 20;
+        red += 20;
+        x2 += 15;
+      }
+
+      if (desempenho === "forte") {
+        geral -= 20;
+        red -= 15;
+      }
+
+      if (estilo === "capa") {
+        geral -= 30;
+        red -= 30;
+        x2 -= 20;
+      }
+
+      if (estilo === "rush") {
+        geral += 15;
+        red += 15;
+        x2 += 10;
+      }
+
+      geral = Math.min(200, geral);
+      red = Math.min(200, red);
+      x2 = Math.min(200, x2);
+      x4 = Math.min(200, x4);
+      awm = Math.min(200, awm);
+      olhadinha = Math.min(200, olhadinha);
+
+      window.sensiFinal = `
+🔥 CONFIG PRO PLAYER 🔥
+
+📱 Celular: ${celular}
+⚙️ Desempenho: ${desempenho}
+🎮 Estilo: ${estilo}
+
+🎯 SENSIBILIDADE
+Geral: ${geral}
+Red Dot: ${red}
+2x: ${x2}
+4x: ${x4}
+AWM: ${awm}
+Olhadinha: ${olhadinha}
+⚡ DPI: ${dpi}
+
+⚙️ CONFIG CELULAR
+- Reduzir animações: 0.5x ou desligado
+- Opções desenvolvedor: ativadas
+- Forçar GPU: ativado
+- Limite de processos: 2 ou 3
+- Game Booster: ativado
+- FPS alto / modo desempenho
+- Brilho: 70% a 100%
+
+🎮 CONFIG FREE FIRE
+- Gráficos: suave
+- Alta resolução: off
+- Sombra: off
+- FPS: alto
+
+💡 DICAS PRO PLAYER
+- Puxa rápido e desce pra capa
+- Não segura spray
+- Treina no modo treino
+
+🔥 Feita pra dar muito capa!
+      `;
+
+      document.getElementById("resultado").innerText = window.sensiFinal;
+    }
+
+    function salvarConfig() {
+      if (!window.sensiFinal) {
+        alert("Gerar a sensibilidade antes de salvar!");
+        return;
+      }
+      navigator.clipboard.writeText(window.sensiFinal)
+        .then(() => alert("Configurações copiadas para o clipboard!"))
+        .catch(() => alert("Não foi possível copiar."));
+    }
+  </script>
+</body>
+</html>
